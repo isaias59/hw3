@@ -30,11 +30,11 @@ char& String::operator[](int index) {
 }
 
 
-int String::size() {
+int String::size() const {
     return strlen(buf);
 }
 
-String String::reverse() {
+String String::reverse() const{
     String reversed;
     int len = size();
     for (int i = 0; i < len; ++i) {
