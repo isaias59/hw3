@@ -92,6 +92,7 @@ String String::operator+(const String& s) const{
 String& String::operator+=(const String& s) {
      size_t currentLength = strlen(buf);
     size_t concatLength = strlen(s.buf);
+
     if (currentLength + concatLength >= MAXLEN) {
         size_t availableSpace = MAXLEN - currentLength - 1;
         strncat(buf + currentLength, s.buf, availableSpace);
@@ -99,6 +100,7 @@ String& String::operator+=(const String& s) {
     else {
         strcat(buf, s.buf);
     }
+
     return *this;
 }
 
