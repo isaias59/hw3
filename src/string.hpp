@@ -13,8 +13,8 @@ public:
 	String(const String& s);
 	String& operator =(const String& s);
 	char& operator [] (int index);
-	int size();
-	String reverse();
+	int size() const;
+	String reverse() const;
 	int indexOf(char c);
 	int indexOf(const String& s);
 
