@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 String::String(const char* s) {
     strncpy(buf, s, MAXLEN - 1);
     buf[MAXLEN - 1] = '\0';
@@ -19,22 +20,19 @@ String& String::operator=(const String& s) {
     return *this;
 }
 
-//char& String::operator[](int index) {
-  //  return buf[index];
-//}
 char& String::operator[](int index) {
     if (index < 0 || index >= size()) {
-        return buf[size() - 1]; // Or return buf[0] for simplicity
+        return buf[size() - 1]; 
     }
     return buf[index];
 }
 
 
-int String::size() const {
+int String::size()const {  //change 1.1
     return strlen(buf);
 }
 
-String String::reverse() const{
+String String::reverse() const{  //change 2.2
     String reversed;
     int len = size();
     for (int i = 0; i < len; ++i) {
@@ -44,7 +42,7 @@ String String::reverse() const{
     return reversed;
 }
 
-int String::indexOf(char c) {
+int String::indexOf(char c)const {
     const char* ptr = strchr(buf, c);
     if (ptr) {
         return ptr - buf;
@@ -52,7 +50,7 @@ int String::indexOf(char c) {
     return -1;
 }
 
-int String::indexOf(const String& s) {
+int String::indexOf(const String& s) const{
     const char* ptr = strstr(buf, s.buf);
     if (ptr) {
         return ptr - buf;
@@ -84,7 +82,7 @@ bool String::operator>=(const String& s) const {
     return strcmp(buf, s.buf) >= 0;
 }
 
-String String::operator+(const String& s) {
+String String::operator+(const String& s) const{
     String result;
     strcpy(result.buf, buf);
     strcat(result.buf, s.buf);
