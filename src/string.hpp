@@ -15,8 +15,8 @@ public:
 	char& operator [] (int index);
 	int size() const;
 	String reverse() const;
-	int indexOf(char c);
-	int indexOf(const String& s);
+	int indexOf(char c)const;
+	int indexOf(const String& s)const;
 
 	bool operator==(const String& s) const;
 	bool operator!=(const String& s) const;
@@ -25,7 +25,7 @@ public:
 	bool operator<=(const String& s) const;
 	bool operator>=(const String& s) const;
 
-	String operator+(const String& s);
+	String operator+(const String& s)const;
 	String& operator+=(const String& s);
 
 	void print(std::ostream& out) const;
@@ -34,7 +34,7 @@ public:
 
 	~String();
 
-	bool in_bounds(int i)
+	bool in_bounds(int i) const
 	{
 		return i >= 0 && i < strlen(buf);
 	}
