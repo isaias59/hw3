@@ -108,6 +108,10 @@ void String::print(std::ostream& out) const {
 
 void String::read(std::istream& in) {
     in.getline(buf, MAXLEN);
+    size_t len = strlen(buf);
+    while (len > 0 && isspace(buf[len - 1])) {
+        buf[--len] = '\0';
+    }
 }
 
 String::~String() {}
