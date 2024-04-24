@@ -1,4 +1,4 @@
-#include "string.hpp"
+#include "string.h"
 #include <fstream>
 
 using namespace std;
@@ -164,7 +164,7 @@ String::String(const char* s) {
     //strncpy(buf, s, MAXLEN - 1);
     //buf[MAXLEN - 1] = '\0';
     if (strlen(s) >= MAXLEN) {
-        std::cerr << "ERROR: String Capacity Exceeded" << std::endl;
+        std::cout << "ERROR" << std::endl;
         buf[0] = '\0'; // Recover by setting an empty string
     }
     else {
@@ -191,7 +191,7 @@ char& String::operator[](int index) {
     //return buf[index];
 
     if (!in_bounds(index)) {
-        std::cerr << "ERROR: Index Out Of Bounds" << std::endl;
+        std::cout << "ERROR" << std::endl;
         return buf[0];
     }
     return buf[index];
@@ -261,7 +261,7 @@ String String::operator+(const String& s) const{
 
     String result;
     if (strlen(buf) + strlen(s.buf) >= MAXLEN) {
-        std::cerr << "ERROR: String Capacity Exceeded" << std::endl;
+        std::cout << "ERROR" << std::endl;
         // Recover by copying only the available space
         strncpy(result.buf, buf, MAXLEN - strlen(s.buf) - 1);
         result.buf[MAXLEN - strlen(s.buf) - 1] = '\0';
@@ -304,7 +304,7 @@ String& String::operator+=(const String& s) {
     */
 
     if (strlen(buf) + strlen(s.buf) >= MAXLEN) {
-        std::cerr << "ERROR: String Capacity Exceeded" << std::endl;
+        std::cout << "ERROR" << std::endl;
         // Recover by appending only the available space
         strncat(buf, s.buf, MAXLEN - strlen(buf) - 1);
         buf[MAXLEN - 1] = '\0';
