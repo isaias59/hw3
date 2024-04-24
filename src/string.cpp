@@ -100,27 +100,27 @@ void String::read(std::istream& in) {
 String::~String() {}
 
 int String::strlen(const char* s) {
-    return strlen(s);
+    return std::strlen(s);
 }
 
 char* String::strcpy(char* dest, const char* src) {
-    return strcpy(dest, src);
+    return std::strcpy(dest, src);
 }
 
 char* String::strncpy(char* dest, const char* src, int n) {
-    return strncpy(dest, src, n);
+    return std::strncpy(dest, src, n);
 }
 
 char* String::strncat(char* dest, const char* src, int n) {
-    return strncat(dest, src, n);
+    return std::strncat(dest, src, n);
 }
 
 int String::strcmp(const char* left, const char* right) {
-    return strcmp(left, right);
+    return std::strcmp(left, right);
 }
 
 int String::strncmp(const char* left, const char* right, int n) {
-    return strncmp(left, right, n);
+    return std::strncmp(left, right, n);
 }
 
 void String::reverse_cpy(char* dest, const char* src) {
@@ -132,11 +132,11 @@ void String::reverse_cpy(char* dest, const char* src) {
 }
 
 const char* String::strchr(const char* str, char c) {
-    return strchr(str, c);
+    return std::strchr(str, c);
 }
 
 const char* String::strstr(const char* haystack, const char* needle) {
-    return strstr(haystack, needle);
+    return std::strstr(haystack, needle);
 }
 
 std::ostream& operator<<(std::ostream& out, const String& s) {
@@ -148,6 +148,3 @@ std::istream& operator>>(std::istream& in, String& s) {
     s.read(in);
     return in;
 }
-
-
-
