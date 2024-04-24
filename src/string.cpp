@@ -19,9 +19,16 @@ String& String::operator=(const String& s) {
     return *this;
 }
 
+//char& String::operator[](int index) {
+  //  return buf[index];
+//}
 char& String::operator[](int index) {
+    if (index < 0 || index >= size()) {
+        return buf[size() - 1]; // Or return buf[0] for simplicity
+    }
     return buf[index];
 }
+
 
 int String::size() {
     return strlen(buf);
