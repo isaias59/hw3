@@ -94,8 +94,9 @@ void String::print(std::ostream& out) const {
     out << buf;
 }
 
-void String::read(std::istream& in) {
-    in.getline(buf, MAXLEN);
+void String::read(std::istream& in) 
+{
+    in >> buff;
 }
 
 String::~String() {}
