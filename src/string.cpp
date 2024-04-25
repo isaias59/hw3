@@ -1,4 +1,4 @@
-#include "string.hpp"
+#include "string.h"
 #include <fstream>
 #include <iostream>
 #include <iomanip>
@@ -32,8 +32,13 @@ String String::reverse()const {
 }
 
 int String::indexOf(char c)const {
-    return strchr(buf, c) - buf;
+    const char* ptr = strchr(buf, c);
+    if (ptr == nullptr) {
+        return -1; 
+    }
+    return ptr - buf;
 }
+
 
 int String::indexOf(const String& s) const{
     return strstr(buf, s.buf) - buf;
