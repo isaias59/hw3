@@ -1,4 +1,4 @@
-#include "string.hpp"
+/*#include "string.hpp"
 #include <fstream>
 #include <iostream>
 #include <iomanip>
@@ -214,4 +214,171 @@ char* strcat(char* dest, const char* src) {
     *ptr = '\0';  
 
     return dest;  
+}
+*/
+
+#include "string.hpp"
+
+String::String(const char* s) {
+    if (s) {
+        int i;
+        for (i = 0; s[i] && i < MAXLEN - 1; ++i) {
+            buf[i] = s[i];
+        }
+        buf[i] = '\0';  
+    }
+    else {
+        buf[0] = '\0';
+    }
+}
+
+String::String(const String& s) {
+    int i;
+    for (i = 0; s.buf[i] && i < MAXLEN - 1; ++i) {
+        buf[i] = s.buf[i];
+    }
+    buf[i] = '\0';  
+}
+
+String& String::operator=(const String& s) {
+    if (this != &s) { 
+        int i;
+        for (i = 0; s.buf[i] && i < MAXLEN - 1; ++i) {
+            buf[i] = s.buf[i];
+        }
+        buf[i] = '\0';  
+    }
+    return *this;
+}
+
+String::~String() {
+}
+
+void String::print(std::ostream& out) const {
+    out << buf;
+}
+
+std::ostream& operator<<(std::ostream& out, const String& s) {
+    s.print(out);
+    return out;
+}
+
+int String::size() const {
+    int length = 0;
+    while (buf[length] != '\0') {
+        ++length;
+    }
+    return length;
+}
+
+char& String::operator[](int index) {
+    if (!in_bounds(index)) {
+        static char nullchar = '\0';
+        std::cerr << "ERROR out of bounds" << std::endl;
+        return nullchar;  
+    }
+    return buf[index];
+}
+
+int String::strlen(const char* s) {
+    int length = 0;
+    while (s[length] != '\0') {
+        ++length;
+    }
+    return length;
+}
+
+bool String::in_bounds(int i) const {
+    return i >= 0 && i < this->size();
+}
+
+bool String::operator==(const String& s) const {
+    if (this->size() != s.size()) {
+        return false;
+    }
+    for (int i = 0; i < this->size(); i++) {
+        if (buf[i] != s.buf[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool String::operator!=(const String& s) const {
+    return !(*this == s);
+}
+
+bool String::operator>(const String& s) const {
+    int minSize = this->size() < s.size() ? this->size() : s.size();
+    for (int i = 0; i < minSize; ++i) {
+        if (buf[i] > s.buf[i]) return true;
+        if (buf[i] < s.buf[i]) return false;
+    }
+    return this->size() > s.size();
+}
+
+bool String::operator<(const String& s) const {
+    return !(*this == s) && !(*this > s);
+}
+bool String::operator>=(const String& s) const {
+    return *this > s || *this == s;
+}
+
+bool String::operator<=(const String& s) const {
+    return *this < s || *this == s;
+}
+
+String String::reverse() const {
+    String rev;
+    int len = this->size();
+    for (int i = 0; i < len; ++i) {
+        rev.buf[i] = buf[len - 1 - i];
+    }
+    rev.buf[len] = '\0'; 
+    return rev;
+}
+
+int String::indexOf(char c) const {
+    for (int i = 0; i < this->size(); ++i) {
+        if (buf[i] == c) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int String::indexOf(const String& s) const {
+    if (s.size() == 0) {
+        return -1;
+    }
+    for (int i = 0; i < this->size(); ++i) {
+        int j = 0;
+        while (i + j < this->size() && j < s.size() && buf[i + j] == s.buf[j]) {
+            ++j;
+        }
+        if (j == s.size()) {
+            return i;
+        }
+    }
+    return -1; 
+}
+
+String String::operator+(const String& s) const {
+    String result;
+    int thisLen = this->size();
+    int otherLen = s.size();
+    int i;
+    for (i = 0; i < thisLen && i < MAXLEN - 1; ++i) {
+        result.buf[i] = buf[i];
+    }
+    for (int j = 0; j < otherLen && i < MAXLEN - 1; ++j, ++i) {
+        result.buf[i] = s.buf[j];
+    }
+    result.buf[i] = '\0'; 
+    return result;
+}
+
+String& String::operator+=(const String& s) {
+    *this = *this + s;
+    return *this;
 }
