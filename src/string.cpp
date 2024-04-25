@@ -320,21 +320,16 @@ void String::print(std::ostream& out) const {
 }
 
 void String::read(std::istream& in) {
-  ////  in.getline(buf, MAXLEN);
-  //  in.getline(buf, MAXLEN);
+   in.getline(buf, MAXLEN);
+  // in.getline(buf, MAXLEN);
 
-   // Trim any trailing whitespace characters
+  //  // Trim any trailing whitespace characters
     size_t len = strlen(buf);
-    while (len > 0 && isspace(buf[len - 1])) {
+    while (len > 0 && isspace(buf[len - 1]))
+    {
         buf[--len] = '\0';
     }
-    //buf[0] = '\0';
-
-    //// Read one word from the input stream
-    //in >> std::setw(MAXLEN) >> buf;
-
-    //// Ignore any remaining characters in the input stream
-    //in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  //  buf[0] = '\0';
 }
 
 String::~String() {}
