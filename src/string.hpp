@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstring>
+
 constexpr int MAXLEN = 1024;
 
 class String {
@@ -12,8 +13,8 @@ public:
 	String(const String& s);
 	String& operator =(const String& s);
 	char& operator [] (int index);
-	int size() const;
-	String reverse() const;
+	int size () const; //change 1
+	String reverse ()const; //change 2
 	int indexOf(char c)const;
 	int indexOf(const String& s)const;
 
