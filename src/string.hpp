@@ -48,6 +48,8 @@ public:
 	static void reverse_cpy(char* dest, const char* src);
 	static const char *strchr(const char* str, char c);
 	static const char *strstr(const char* haystack, const char* needle);
+	static char* strcat(char* dest, const char* src);
+
 
 private:
 	char buf[MAXLEN];
