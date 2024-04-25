@@ -323,18 +323,18 @@ void String::read(std::istream& in) {
   ////  in.getline(buf, MAXLEN);
   //  in.getline(buf, MAXLEN);
 
-  //  // Trim any trailing whitespace characters
-  //  size_t len = strlen(buf);
-  //  while (len > 0 && isspace(buf[len - 1])) {
-  //      buf[--len] = '\0';
-  //  }
-    buf[0] = '\0';
+   // Trim any trailing whitespace characters
+    size_t len = strlen(buf);
+    while (len > 0 && isspace(buf[len - 1])) {
+        buf[--len] = '\0';
+    }
+    //buf[0] = '\0';
 
-    // Read one word from the input stream
-    in >> std::setw(MAXLEN) >> buf;
+    //// Read one word from the input stream
+    //in >> std::setw(MAXLEN) >> buf;
 
-    // Ignore any remaining characters in the input stream
-    in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    //// Ignore any remaining characters in the input stream
+    //in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 String::~String() {}
