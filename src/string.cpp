@@ -327,14 +327,13 @@ void String::print(std::ostream& out) const {
 }
 
 void String::read(std::istream& in) {
-  //  in.getline(buf, MAXLEN);
-    in.getline(buf, MAXLEN);
+ buf[0] = '\0';
+    
+    // Read one word from the input stream
+    in >> std::setw(MAXLEN) >> buf;
 
-    // Trim any trailing whitespace characters
-    size_t len = strlen(buf);
-    while (len > 0 && isspace(buf[len - 1])) {
-        buf[--len] = '\0';
-    }
+    // Ignore any remaining characters in the input stream
+    in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 String::~String() {}
