@@ -1,4 +1,4 @@
-#include "string.hpp"
+#include "string.h"
 #include <fstream>
 #include <iostream>
 #include <iomanip>
@@ -157,13 +157,45 @@ char& String::operator[](int index) {
 }
 
 char* String::strncat(char* dest, const char* src, int n) {
-    return std::strncat(dest, src, n);
+    char* ptr = dest;
+    int i = 0;
+    while (*ptr != '\0') {
+        i++;
+        ptr++;  
+    }
+
+    while (*src != '\0' && i < n) {
+        i++;
+        *ptr++ = *src++;  
+    }
+    *ptr = '\0';  
+
+    return dest;  
 }
 
 const char* String::strchr(const char* str, char c) {
-    return std::strchr(str, c);
+    for (int i = 0; str[i] != '\0' && i < MAXLEN; i++) {
+        if (str[i] == c) {
+            return str + i;
+        }
+    }
+    return nullptr;
 }
 
 const char* String::strstr(const char* haystack, const char* needle) {
     return std::strstr(haystack, needle);
+}
+
+char* strcat(char* dest, const char* src) {
+    char* ptr = dest;
+    while (*ptr != '\0') {
+        ptr++;  
+    }
+
+    while (*src != '\0') {
+        *ptr++ = *src++;  
+    }
+    *ptr = '\0';  
+
+    return dest;  
 }
