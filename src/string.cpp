@@ -181,10 +181,16 @@ const char* String::strchr(const char* str, char c) {
     }
     return nullptr;
 }
-
+/////////////////////////////////////////////////////////
 const char* String::strstr(const char* haystack, const char* needle) {
-    return std::strstr(haystack, needle);
+    int len = strlen(needle);
+    for (const char* p = haystack; (p = strchr(p, needle[0])); ++p)
+        if (strncmp(p, needle, len) == 0)
+            return p;
+    return nullptr;
 }
+
+////////////////////////////////////
 
 char* strcat(char* dest, const char* src) {
     char* ptr = dest;
