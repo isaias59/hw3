@@ -39,10 +39,14 @@ int String::indexOf(char c)const {
     return ptr - buf;
 }
 
-
-int String::indexOf(const String& s) const{
-    return strstr(buf, s.buf) - buf;
+int String::indexOf(const String& s) const {
+    const char* ptr = strstr(buf, s.buf);
+    if (ptr == nullptr) {
+        return -1; // Substring not found
+    }
+    return ptr - buf;
 }
+
 
 bool String::operator==(const String& s) const {
     return strcmp(buf, s.buf) == 0;
