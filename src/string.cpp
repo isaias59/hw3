@@ -42,10 +42,11 @@ int String::indexOf(char c)const {
 int String::indexOf(const String& s) const {
     const char* ptr = strstr(buf, s.buf);
     if (ptr == nullptr) {
-        return -1; // Substring not found
+        return -1; 
     }
     return ptr - buf;
 }
+
 
 
 bool String::operator==(const String& s) const {
