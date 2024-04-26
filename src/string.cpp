@@ -41,8 +41,7 @@ String& String::operator=(const String& s) {
 
 char& String::operator[](int index) {
     if (!in_bounds(index)) {
-        static char nullChar = '\0';
-        return nullChar;
+        cout << ("ERROR");
     }
     return buf[index];
 }
