@@ -15,13 +15,13 @@ public:
 
     char& operator[](int index);
 
-    int size();
+    int size() const;
 
-    String reverse();
+    String reverse()const;
 
-    int indexOf(char c);
+    int indexOf(char c)const;
 
-    int indexOf(const String& s);
+    int indexOf(const String& s)const;
 
     bool operator==(const String& s) const;
     bool operator!=(const String& s) const;
@@ -40,7 +40,7 @@ public:
 
     ~String();
 
-    bool in_bounds(int i);
+    bool in_bounds(int i)const;
     static int strlen(const char* s);
     static char* strcpy(char* dest, const char* src);
     static char* strncpy(char* dest, const char* src, int n);
