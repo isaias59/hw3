@@ -17,13 +17,7 @@ static void stringCopy(char* dest, const char* src) {
 }
 
 String::String(const char* s) {
-    if (stringLength(s) >= MAXLEN) {
-        // Handle error or truncate
-        strncpy(buf, s, MAXLEN - 1);
-        buf[MAXLEN - 1] = '\0';
-    } else {
-        stringCopy(buf, s);
-    }
+    stringCopy(buf, s);
 }
 
 String::String(const String& s) {
