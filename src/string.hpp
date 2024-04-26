@@ -48,7 +48,7 @@ public:
     static char* strncat(char* dest, const char* src, int n);
     static int strcmp(const char* left, const char* right);
     static int strncmp(const char* left, const char* right, int n);
-    static void reverse_copy(char* dest, const char* src);
+    static void reverse_cpy(char* dest, const char* src);
     static const char* strchr(const char* str, char c);
     static const char* strstr(const char* haystack, const char* needle);
 
