@@ -28,7 +28,7 @@ String::~String() {
     buf[0] = '\0';
 }
 
-int String::size() {
+int String::size() const{
     return stringLength(buf);
 }
 
@@ -93,7 +93,7 @@ String& String::operator+=(const String& s) {
     return *this;
 }
 
-String String::reverse() {
+String String::reverse() const{
     String reversed;
     int end = size() - 1;
     for (int i = 0; i <= end; ++i) {
@@ -103,7 +103,7 @@ String String::reverse() {
     return reversed;
 }
 
-int String::indexOf(char c) {
+int String::indexOf(char c) const{
     for (int i = 0; buf[i] != '\0'; ++i) {
         if (buf[i] == c) {
             return i;
@@ -112,7 +112,7 @@ int String::indexOf(char c) {
     return -1; 
 }
 
-int String::indexOf(const String& s) {
+int String::indexOf(const String& s) const{
     const char* found = std::strstr(buf, s.buf);
     if (found) {
         return found - buf;
@@ -120,7 +120,7 @@ int String::indexOf(const String& s) {
     return -1; 
 }
 
-bool String::in_bounds(int i) {
+bool String::in_bounds(int i)const {
     return i >= 0 && i < stringLength(buf);
 }
 
